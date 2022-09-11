@@ -1,0 +1,10 @@
+{
+  "cordova-plugin-hybrid": {
+    "source": {
+      "type": "local",
+      "path": "../HybridBridgePlugin"
+    },
+    "is_top_level": true,
+    "variables": {}
+  }
+}

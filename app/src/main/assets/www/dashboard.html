@@ -1,0 +1,888 @@
+<!--
+/**
+ * cordova-jquery-bootstrap
+ * File: index.html
+ * Created by rajeendra on 7/29/17.
+ *
+ */
+-->
+
+<!--<meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">-->
+
+<!DOCTYPE html>
+<!--
+    Licensed to the Apache Software Foundation (ASF) under one
+    or more contributor license agreements.  See the NOTICE file
+    distributed with this work for additional information
+    regarding copyright ownership.  The ASF licenses this file
+    to you under the Apache License, Version 2.0 (the
+    "License"); you may not use this file except in compliance
+    with the License.  You may obtain a copy of the License at
+
+    http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing,
+    software distributed under the License is distributed on an
+    "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+     KIND, either express or implied.  See the License for the
+    specific language governing permissions and limitations
+    under the License.
+-->
+<html>
+
+<head>
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGTSJwLVM4SEN7J-cuKcyKuRelalmhzg&callback=myMapz"></script>-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGTSJwLVM4SEN7J-cuKcyKuRelalmhzg"></script>-->
+    <!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxf5-rZTRZH33TdYgCC9V9J-Qlx1N7ya4"></script>-->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCxf5-rZTRZH33TdYgCC9V9J-Qlx1N7ya4"></script>
+    <!--
+    Customize this policy to fit your own app's needs. For more guidance, see:
+        https://github.com/apache/cordova-plugin-whitelist/blob/master/README.md#content-security-policy
+    Some notes:
+        * gap: is required only on iOS (when using UIWebView) and is needed for JS->native communication
+        * https://ssl.gstatic.com is required only on Android and is needed for TalkBack to function properly
+        * Disables use of inline scripts in order to mitigate risk of XSS vulnerabilities. To change this:
+            * Enable inline JS: add 'unsafe-inline' to default-src
+    -->
+
+    <!--<meta http-equiv="Content-Security-Policy" content="default-src &apos;self&apos; data: gap: https://ssl.gstatic.com &apos;unsafe-eval&apos;; style-src &apos;self&apos; &apos;unsafe-inline&apos;; media-src *; img-src &apos;self&apos; data: content:;">-->
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="msapplication-tap-highlight" content="no">
+    <!--<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />-->
+    <meta name="viewport" content="user-scalable=no, initial-scale=1, maximum-scale=1, minimum-scale=1, width=device-width, height=device-height ">
+    <!--<meta name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=2, minimum-scale=1, width=device-width" />-->
+    <!--<meta id="viewport-meta" name="viewport" content="user-scalable=yes, initial-scale=1, maximum-scale=1, minimum-scale=1"/>-->
+
+    <title>JQBootstrap</title>
+
+    <link rel="stylesheet" href="bootstrap-3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+
+    <!--<style>-->
+        <!--/* For avoiding title truncation in wp8 */-->
+        <!--.ui-header .ui-title {-->
+            <!--overflow: visible !important;-->
+        <!--}-->
+        <!--/* For fixing the absolute position issue for the default cordova gen page*/-->
+        <!--#cjp-accordion1 .app {-->
+            <!--left: 5px !important;-->
+            <!--margin: 5px !important;-->
+            <!--position: relative !important;-->
+        <!--}-->
+    <!--</style>-->
+  
+
+</head>
+
+<body>
+<!-- ========================================================================================================== -->
+<!-- Hidden components -->
+
+<div hidden id="loader" class="loader" ></div>
+
+<div hidden id="toast-primary" class="toast-container" style="background-color: #abc8f3d0; color: rgb(60, 65, 70);">
+    <div class="toast-header" style="background-color: #0b3b83d0; color: aliceblue;" >Information!
+          <button type="button" class="ml-2 mb-1 close" >  
+            <span aria-hidden="true" style="margin-right: 5px;">&times;</span>
+          </button>
+    </div>
+    <div id="msgToast" class="toast-msg-holder">
+        Pleace be noted
+    </div>
+    <div class="toast-btn-holder">
+        <a id="btnToast" href="#" class="btn btn-primary toast-btn" >ok</a>
+    </div>
+</div>
+
+<div hidden id="toast-success" class="toast-container" style="background-color: #b4dbbb; color: rgb(60, 65, 70);">
+    <div class="toast-header" style="background-color: #3f9752; color: aliceblue;" >Successful!
+          <button type="button" class="ml-2 mb-1 close" >  
+            <span aria-hidden="true" style="margin-right: 5px;">&times;</span>
+          </button>
+    </div>
+    <div id="msgToast" class="toast-msg-holder">
+        successful saved! successful saved! successful saved!
+    </div>
+    <div class="toast-btn-holder">
+        <a id="btnToast" href="#" class="btn btn-success toast-btn" >ok</a>
+    </div>
+</div>
+
+<div hidden id="toast-danger" class="toast-container" style="background-color: #f5cccc; color: rgb(60, 65, 70);">
+    <div class="toast-header" style="background-color: #ac2929; color: aliceblue;" >Unsuccessful!
+          <button type="button" class="ml-2 mb-1 close" >  
+            <span aria-hidden="true" style="margin-right: 5px;">&times;</span>
+          </button>
+    </div>
+    <div id="msgToast" class="toast-msg-holder">
+        Oops! something went wrong
+    </div>
+    <div class="toast-btn-holder">
+        <a id="btnToast" href="#" class="btn btn-danger toast-btn" >ok</a>
+    </div>
+</div>
+
+<!-- ========================================================================================================== -->
+<!-- Horizontal touch scroll icon bar-->
+<!-- Font Awesome Web Application Icons -->
+<div id="toolbar" style="display:none;" class="horizontal-scroll-wrapper squares">
+    <div><a class="fa fa-home rk-a-icon" href="javascript:showPage01();"></a></div>
+    <div><a class="fa fa-home rk-a-icon" href="javascript:showPage01();"></a></div>
+    <div><a class="fa fa-user rk-a-icon" href="javascript:showPage03();"></a></div>
+    <div><a class="fa fa-linode rk-a-icon" href="javascript:testFunc();"></a></div>
+    <div><a class="fa fa-envelope rk-a-icon" href="javascript:sendEmail();"></a></div>
+    <div><a class="fa fa-map-marker rk-a-icon" href="javascript:showLocation();"></a></div>
+    <div><a class="fa fa-photo rk-a-icon" href="javascript:showPage05();"></a></div>
+    <div><a class="fa fa-twitter rk-a-icon" href="#" onclick="window.open('https://twitter.com/rajeendra', '_system');"></a></div>
+    <div><a class="fa fa-edit rk-a-icon" href="javascript:showPage06();"></a></div>
+    <div><a class="fa fa-cog rk-a-icon" href="javascript:showPageUC();"></a></div>
+    <div><a class="fa fa-map rk-a-icon" href="javascript:showMap();"></a></div>
+</div>
+
+<!-- ========================================================================================================== -->
+<!-- nav bar -->
+<div style="margin-top: 80px;"></div>
+<nav id="myNavbar" style="display:none;" class="navbar navbar-default navbar-inverse navbar-right" role="navigation">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" style="background-color:#0088bb; color:white; border:none" data-toggle="collapse" data-target="#navbarCollapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#" style="font-size:smaller; color: wheat;"><i style="font-size:2em; float: left;" onclick="stepBack()" class="glyphicon glyphicon-chevron-left"></i>&nbsp;&nbsp; Copyright 2017 Rajeendra</a>
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" style="border-color: white;" id="navbarCollapse">
+            <ul class="nav navbar-nav">
+                <!--<li class="active"><a href="https://www.tutorialrepublic.com" target="_blank">Home</a></li>-->
+                <!--<li><a href="https://www.tutorialrepublic.com/about-us.php" target="_blank">About</a></li>-->
+                <!--<li><a href="https://www.tutorialrepublic.com/contact-us.php" target="_blank">Contact</a></li>-->
+
+                <!--<li class="active"><a href="javascript:gotoPage(1);">Home</a></li>-->
+                <li><a href="javascript:showPage01();" style="color: wheat;">Home</a></li>
+                <li><a href="javascript:showPage06();" style="color: wheat;">Register</a></li>
+                <li><a href="javascript:showPage03();" style="color: wheat;">Contact</a></li>
+                <li><a href="javascript:showPage05();" style="color: wheat;">Album</a></li>
+                <li><a href="javascript:showPageUC();" style="color: wheat;">Social</a></li>
+                <li><a href="javascript:showPageUC();" style="color: wheat;">Configuration</a></li>
+                <!--<li><a href="javascript:signout();" style="color: wheat;">Sign out</a></li>-->
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- /Nav bar -->
+
+<!-- ========================================================================================================== -->
+
+<!--<div id="pageContent" style="margin-top: 0px;">-->
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+<!-- pageOne - Home -->
+
+    <div class="container" id="pageOne" style="display: none">
+        <div class="jumbotron">
+            <h1>Home</h1>
+            <p>At <a href="#">tutorialrepublic.com</a> you will learn the essential of web development technologies along with real life practice example, so that you can create your own website to connect with the people around the world.</p>
+            <button type="button" class="btn btn-success btn-lg" data-toggle="modal" data-target="#modalOne">Open Modal</button>
+            <button id="btnCam" class="btn btn-success btn-lg" >Camera</button>
+        </div>
+    </div>
+
+    <div id="modalContent">
+
+        <div class="modal fade" id="modalOne" role="dialog">
+            <div class="modal-dialog">
+
+                <div class="modal-content">
+                    <div class="modal-header" >
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Modal Header</h4>
+                    </div>
+                    <div class="modal-body" style="/*! padding: 2px; */margin: 3px;">
+                        <div class="row">
+                            <p>Info.</p>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6 col-sm-4 rk-bs2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                    <input id="txt11" type="text" class="form-control" name="msg" placeholder="Info 11">
+                                </div>
+                            </div>
+                            <div class="col-xs-6 col-sm-4 rk-bs2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                    <input id="txt12" type="text" class="form-control" name="msg" placeholder="Info 12">
+                                </div>
+                            </div>
+                            <div class="clearfix visible-xs-block"></div>
+                            <div class="col-xs-6 col-sm-4 rk-bs2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                    <input id="txt13" type="text" class="form-control" name="msg" placeholder="Info 13">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-8 col-sm-6 col-md-8 rk-bs2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                    <input id="txt14" type="text" class="form-control" name="msg" placeholder="Info 14">
+                                </div>
+                            </div>
+                            <div class="col-xs-12 col-sm-6  col-md-4 rk-bs2">
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                    <input id="txt15" type="text" class="form-control" name="msg" placeholder="Info 15">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-success" data-dismiss="modal">Save</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+<!-- pageTwo - Contact modify-->
+
+
+<!-- bootstrap mobile page 2 -->
+<!--<div id="alertMsgBox">-->
+<!--</div>-->
+
+<!--<div class="alert alert-success">-->
+<!--<strong>Success!</strong> Indicates a successful or positive action.-->
+<!--</div>-->
+<div class="container"  id="pageTwo" style="display: none">
+    <div class="input-group">
+        <p style="margin-bottom: unset;"><a href="#" class="list-group-item active">Contact</a></p>
+        <span onclick="refreshContact()" class="input-group-addon"><i class="glyphicon glyphicon-refresh"></i></span>
+    </div>
+    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+        <form>
+            <!--<div class="input-group">-->
+            <!--<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
+            <!--<input id="email" type="text" class="form-control" name="email" style="z-index: 0;" placeholder="Email">-->
+            <!--</div>-->
+
+            <div class="row">
+                <div class="col-xs-6" style="padding-right: unset;">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="fname" type="text" class="form-control" name="fname" style="z-index: 0; font-size: 16px;" placeholder="first name">
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding-left: unset;">
+                    <input id="lname" type="text" class="form-control" name="lname" style="z-index: 0; font-size: 16px;" placeholder="last name">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="password" style="z-index: 0;" placeholder="Password">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                <input id="cpse" type="text" class="form-control" name="cpse" style="z-index: 0; font-size: 16px;" placeholder="company, place, service or event">
+            </div>
+        </form>
+
+        <div class="panel panel-default" style="margin-top: 2px;">
+            <div class="panel-heading" style="padding-bottom: unset;">
+                <div class="panel-numberTable-body" style="padding-top: unset; padding-bottom: unset; margin-bottom: 13px;">
+                    <!--
+                    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+                    <div class="list-group">
+                        <div id="numbers">
+                        </div>
+                    </div>
+                    </div>
+                                -->
+                    <div class="row" id="panel-numberTable">
+                        <div class="row">
+                            <div style="overflow-x:auto;">
+                                <div class="col-xs-12">
+                                    <table id="numberTable">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <!--<div class="row" style="margin-left: 1px; margin-top: 3px; margin-bottom: 3px;" >
+
+                    </div>-->
+
+                    <div class="row" id="numberTable-bottom" style="display:none;">
+                        <div class="col-xs-2"  style="margin-top: 4px; margin-bottom: 4px;">
+                            <button type="button" id="btnSaveNum" class="btn btn-primary">Save</button>
+                        </div>
+                        <div class="col-xs-8" >
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 4px; margin-bottom: 4px;">
+                            <button type="button" id="btnAddNum" class="btn btn-primary" style="float: right; ">Add</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- < panel number Options > -->
+                <div class="row" id="panel-numberOptions" style="display: none" >
+
+                    <div class="row">
+
+
+                        <div class="col-xs-1">
+
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 4px; padding-left: unset;">Default
+                        </div>
+                        <div class="col-xs-4" >
+                            <label class="switch" id="default">
+                                <!--<input type="checkbox" checked>-->
+                                <input type="checkbox" >
+                                <span class="slider disable round"></span>
+                            </label>
+                        </div>
+                        <div class="col-xs-4" style="margin-top: 4px; padding-left: unset; "  id="numberOptions-top">
+
+                        </div>
+                        <!--<div class="col-xs-3">-->
+
+                        <!--</div>-->
+
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-1">
+
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; ">Own
+
+                        </div>
+                        <div class="col-xs-4" >
+                            <label class="switch" id="sliderOwnWork">
+                                <!--<input type="checkbox" checked>-->
+                                <input type="checkbox" id="cbOwnWork">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; " >Work
+
+                        </div>
+                        <div class="col-xs-3">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-1">
+
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; ">Mobile
+
+                        </div>
+                        <div class="col-xs-4" >
+                            <label class="switch">
+                                <!-- <input type="checkbox" checked> -->
+                                <input type="checkbox">
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; " >Land
+
+                        </div>
+                        <div class="col-xs-3">
+
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-1">
+
+                        </div>
+                        <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; ">Fax
+
+                        </div>
+                        <div class="col-xs-4" >
+                            <label class="switch">
+                                <input type="checkbox" checked>
+                                <span class="slider round"></span>
+                            </label>
+                        </div>
+                        <!--<div class="col-xs-1" >-->
+
+                        <!--</div>-->
+                        <div class="col-xs-1" style="margin-top: 4px; padding-left: unset;">
+                            <button type="button" id="btnOKnumbeOptions" class="btn btn-primary">OK</button>
+                        </div>
+                        <div class="col-xs-4">
+
+                        </div>
+                    </div>
+                </div>
+                <!-- </ panel number Options > -->
+
+            </div>
+
+
+        </div>
+    </div>
+
+</div> <!--</Row page2>-->
+</div>
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+<!-- pageThree  - Contact list-->
+
+<!--<div id="alertMsgBox">-->
+<!--</div>-->
+
+<div class="container"  id="pageThree" style="display: none; height: 100%;">
+    <div class="row" style="margin-left: 1px;margin-right: 1px; padding-bottom: 2px;">
+        <div class="input-group">
+            <span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+            <input id="contactSearch"  onkeyup="contactSearchFunction()" type="text" class="form-control" name="contactSearch" style="z-index: 0;" placeholder="search for contacts">
+        </div>
+    </div>
+    <div class="row" style="margin-left: 1px;margin-right: 1px; height: 100%;">
+        <div class="list-group">
+            <!--<p>-->
+            <!--<a href="#" class="list-group-item active">-->
+            <!--Contact Names-->
+            <!--</a>-->
+            <!--</p>-->
+            <div id="toDoItemsHead">
+            </div>
+            <div id="toDoItems" style="height: 100%;">
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- end page 3 -->
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+<!-- under-construction -->
+
+<div class="container"  id="under-construction" style="display: none">
+    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+        <img class="img-responsive" src="img/under-construction.png" >
+    </div>
+
+</div>
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+<!-- pageFive - photo gallery -->
+
+<div class="container" id="pageFive" style="display: none">
+
+    <select class="target" id="albdd" size=1>
+        <option value=1>Skyscrapers</option>
+        <option value=2>Locomotives</option>
+        <option value=3>Fashion</option>
+    </select>
+
+    <div id="carouselContainer" style="margin-top: 3px"></div>
+
+</div>
+
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+<!-- pageSix - Config -->
+
+
+<div class="container"  id="pageSix" style="display: none">
+    <div id="alertMsgBox">
+    </div>
+    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+        <form>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                <input id="email" type="text" class="form-control" name="email" style="z-index: 0;" placeholder="Email">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="password" style="z-index: 0;" placeholder="Password">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                <input id="mongodb-apikey" type="text" class="form-control" name="msg" style="z-index: 0;" placeholder="Mongodb API-KEY">
+            </div>
+        </form>
+        <div class="panel panel-default" style="margin-top: 2px;">
+
+            <div class="panel-heading" style="padding-bottom: unset;">Info one</div>
+            <div class="panel-body" style="padding-top: unset;padding-bottom: unset;">
+                <div class="row">
+                    <div class="col-xs-4" style="padding: unset;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt1" type="text" class="form-control" name="msg" placeholder="Info 1">
+                        </div>
+                    </div>
+                    <div class="col-xs-8" style="padding: unset;">
+                        <div class="input-group" style="padding: unset;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt2" type="text" class="form-control" name="msg" placeholder="Info 2">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6" style="padding: unset;">
+                        <div class="input-group" style="padding: unset;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input type="text" id="dp1" class="form-control datepicker input-md" width="150px" placeholder="Date:24/05/2010">
+                            <!--<input id="dp1" data-role="date" type="text">-->
+                        </div>
+                    </div>
+                    <div class="col-xs-6" style="padding: unset;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt4" type="text" class="form-control" name="msg" placeholder="Info 4">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" style="padding: unset;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt5" type="text" class="form-control" name="msg" placeholder="Info 5">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-8" style="padding: unset;">
+                        <div class="input-group" style="padding: unset;">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt6" type="text" class="form-control" name="msg" placeholder="Info 6">
+                        </div>
+                    </div>
+                    <div class="col-xs-4" style="padding: unset;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt7" type="text" class="form-control" name="msg" placeholder="Info 7">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-6" style="padding: unset;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt8" type="text" class="form-control" name="msg" placeholder="Info 8">
+                        </div>
+                    </div>
+                    <div class="col-xs-6" style="padding: unset;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt9" type="text" class="form-control" name="msg" placeholder="Info 9">
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xs-12" style="padding: unset;">
+                        <div class="input-group">
+                            <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                            <input id="txt10" type="text" class="form-control" name="msg" placeholder="Info 10">
+                        </div>
+                    </div>
+                </div>
+            </div> <!--</panel body >-->
+        </div>
+        <div class="row" style="margin-left: 1px;">
+            <!--<p><a href="#" id="btnSave" class="btn btn-success">Save &raquo;</a></p>-->
+            <button type="button" id="btnSave" class="btn btn-success">Save</button>
+        </div>
+    </div> <!--</Row page2>-->
+</div>
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+<!-- pageSeven - Config -->
+
+<div class="container"  id="pageSeven" style="display: none">
+    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+        <label for="sel1">Contact list url:</label>
+        <select class="form-control" id="sel1">
+            <option>https://jsonplaceholder.typicode.com/users</option>
+            <option>https://hello-world-sec.appspot.com/hello/ajaxCall</option>
+        </select>
+    </div>
+
+</div>
+
+<!-- ────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── -->
+
+
+
+<!--</div>-->
+
+<!-- ========================================================================================================== -->
+<!-- login and signup -->
+<div class="container">
+    <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div id="alertMsgBox">
+
+        </div>
+        <div class="panel panel-info" >
+            <div class="panel-heading">
+                <div class="panel-title">Sign In</div>
+                <div style="float:right; font-size: 80%; position: relative; top:-10px"><a href="#">Forgot password?</a></div>
+            </div>
+
+            <div style="padding-top:30px" class="panel-body" >
+
+                <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+
+                <form id="loginform" class="form-horizontal" role="form">
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="login-username" type="text" class="form-control" name="username" value="" placeholder="username or email">
+                    </div>
+
+                    <div style="margin-bottom: 25px" class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                        <input id="login-password" type="password" class="form-control" name="password" placeholder="password">
+                    </div>
+
+
+
+                    <div class="input-group">
+                        <div class="checkbox">
+                            <label>
+                                <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                            </label>
+                        </div>
+                    </div>
+
+
+                    <div style="margin-top:10px" class="form-group">
+                        <!-- Button -->
+
+                        <div class="col-sm-12 controls">
+                            <a id="btn-login" href="#" class="btn btn-success">Login  </a>
+                            <a id="btn-fblogin" href="#" class="btn btn-primary">Login with Facebook</a>
+
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <div class="col-md-12 control">
+                            <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                Don't have an account!
+                                <a href="#" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                    Sign Up Here
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+
+
+
+            </div>
+        </div>
+    </div>
+    <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+        <div class="panel panel-info">
+            <div class="panel-heading">
+                <div class="panel-title">Sign Up</div>
+                <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" href="#" onclick="$('#signupbox').hide(); $('#loginbox').show()">Sign In</a></div>
+            </div>
+            <div class="panel-body" >
+                <form id="signupform" class="form-horizontal" role="form">
+
+                    <div id="signupalert" style="display:none" class="alert alert-danger">
+                        <p>Error:</p>
+                        <span></span>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <label for="email" class="col-md-3 control-label">Email</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="email" placeholder="Email Address">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="firstname" class="col-md-3 control-label">First Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="firstname" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastname" class="col-md-3 control-label">Last Name</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="password" class="col-md-3 control-label">Password</label>
+                        <div class="col-md-9">
+                            <input type="password" class="form-control" id="password" placeholder="Password">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="icode" class="col-md-3 control-label">Invitation Code</label>
+                        <div class="col-md-9">
+                            <input type="text" class="form-control" id="icode" placeholder="">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <!-- Button -->
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-signup" type="button" class="btn btn-info"><i class="icon-hand-right"></i> &nbsp Sign Up</button>
+                            <span style="margin-left:8px;">or</span>
+                        </div>
+                    </div>
+
+                    <div style="border-top: 1px solid #999; padding-top:20px"  class="form-group">
+
+                        <div class="col-md-offset-3 col-md-9">
+                            <button id="btn-fbsignup" type="button" class="btn btn-primary"><i class="icon-facebook"></i>   Sign Up with Facebook</button>
+                        </div>
+
+                    </div>
+
+
+
+                </form>
+            </div>
+        </div>
+
+
+
+
+    </div>
+</div>
+<!-- /login and signup -->
+
+<div id="protectedZone" style="display:none;" >
+    <input id="flag-login-state" type="text" value="false" >
+</div>
+
+<!-- ========================================================================================================== -->
+<!-- footer -->
+
+<footer id="mainFooter"  class="footer" style="display:none; background-color:#478bc5; padding:8px; color:white; padding-top:40px; margin-top:5px">
+    <div id="mapDiv" class="row" style="margin-left: 1px; margin-bottom: 5px">
+        <div class="col-xs-8 col-sm-6 col-md-6" >
+            <div id="googleMap" style="height:100px; padding: 2px;"></div>
+            <!--<div id="googleMap" ></div>-->
+        </div>
+        <div class="col-xs-4 col-sm-6  col-md-6">
+
+        </div>
+    </div>
+    <!--<div id="googleMap" ></div>-->
+    <div class="row" style="margin-left: 1px;">
+        <div class="col-xs-8 col-sm-6 col-md-6" >
+            <p style="font-size: 12px;"> Copyright 2017 Rajeendra.</p>
+        </div>
+        <div class="col-xs-4 col-sm-6  col-md-6">
+
+        </div>
+    </div>
+</footer>
+
+<!-- ========================================================================================================== -->
+
+<!--<script type="text/javascript" src="cordova.js"></script>-->
+
+<!--<script type="text/javascript" src="jquery.mobile-1.4.5/jquery-1.11.3.min.js" id="cordova-jquery"></script>-->
+<!--<script type="text/javascript" id="jqm-trans-disable">-->
+    <!--/* For having a faster transition */-->
+    <!--$(document).on("mobileinit", function() {-->
+        <!--$.mobile.defaultPageTransition = "none";-->
+        <!--$.mobile.defaultDialogTransition = "none";-->
+    <!--});-->
+<!--</script>-->
+
+<script type="text/javascript" src="jquery.mobile-1.4.5/jquery-1.11.3.min.js"></script>
+<!-- if you enable below script then loader will not work properly -->
+<!--<script type="text/javascript" src="jquery.mobile-1.4.5/jquery.mobile-1.4.5.min.js"></script>--> <!--this required to use swipe events like swipeleft swiperight -->
+<script type="text/javascript" src="bootstrap-3.3.7/js/bootstrap.min.js"></script>
+
+<!--<script type="text/javascript" src="js/index.js"></script>-->
+<script type="text/javascript" src="js/login.js"></script>
+<script type="text/javascript" src="js/dashboard.js"></script>
+
+<!--<script type="text/javascript" src="cordova.js"></script>-->
+<!--<script type="text/javascript" src="js/index.js"></script>-->
+<!--<script type="text/javascript" src="dashboard.js"></script>-->
+<!--<script type="text/javascript" src="js/temp.js"></script>-->
+
+<!-- Add Google Maps for footer-->
+
+<script type="text/javascript">
+
+     //var contactURL="https://hello-world-sec.appspot.com/hello/ajaxCall";
+     var contactURL="https://jsonplaceholder.typicode.com/users";
+     var contactContentType="";
+     //var contactContentType="application/json; charset=UTF-8"
+
+    /*
+    Get GeoLocation:
+    rajeendra@plap:~$ curl ipinfo.io/ip   //obtain public ip
+    112.134.69.176
+    rajeendra@plap:~$ curl freegeoip.net/xml/112.134.73.196   // pass public ip to get geoLocation
+   */
+
+    //function myMapz() {
+        //alert("myMapz");
+        //Android.showToast("myMapz 1");
+
+        //var myCenter = new google.maps.LatLng(51.508742, -0.120850);
+        var myCenter = new google.maps.LatLng(6.8523, 79.8656);
+
+        var mapOptions = {
+            center: myCenter,
+            //zoom:5,
+            zoom: 12,
+        };
+        //var mapCanvas = document.getElementById("googleMap");
+
+
+        //var map = new google.maps.Map(mapCanvas, mapOptions);
+
+
+        //var marker = new google.maps.Marker({position: myCenter});
+
+
+        //marker.setMap(map);
+
+    //}
+
+    //setMarkers(map, beaches);
+
+</script>
+
+<!--<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIGTSJwLVM4SEN7J-cuKcyKuRelalmhzg&callback=myMapz"></script>-->
+
+
+</body>
+
+</html>

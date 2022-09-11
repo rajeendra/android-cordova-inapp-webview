@@ -1,0 +1,310 @@
+<!-- bootstrap mobile page 2 -->
+<div id="alertMsgBox">
+</div>
+
+<!--<div class="alert alert-success">-->
+<!--<strong>Success!</strong> Indicates a successful or positive action.-->
+<!--</div>-->
+<div class="container"  id="pageTwo" style="display: none">
+    <div class="input-group">
+        <p style="margin-bottom: unset;"><a href="#" class="list-group-item active">Contact</a></p>
+        <span onclick="refreshContact()" class="input-group-addon"><i class="glyphicon glyphicon-refresh"></i></span>
+    </div>
+    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+        <form>
+            <!--<div class="input-group">-->
+                <!--<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>-->
+                <!--<input id="email" type="text" class="form-control" name="email" style="z-index: 0;" placeholder="Email">-->
+            <!--</div>-->
+
+            <div class="row">
+                <div class="col-xs-6" style="padding-right: unset;">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                        <input id="fname" type="text" class="form-control" name="fname" style="z-index: 0; font-size: 16px;" placeholder="first name">
+                    </div>
+                </div>
+                <div class="col-xs-6" style="padding-left: unset;">
+                    <input id="lname" type="text" class="form-control" name="lname" style="z-index: 0; font-size: 16px;" placeholder="last name">
+                </div>
+            </div>
+
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                <input id="password" type="password" class="form-control" name="password" style="z-index: 0;" placeholder="Password">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                <input id="cpse" type="text" class="form-control" name="cpse" style="z-index: 0; font-size: 16px;" placeholder="company, place, service or event">
+            </div>
+        </form>
+
+        <div class="panel panel-default" style="margin-top: 2px;">
+            <div class="panel-heading" style="padding-bottom: unset;">
+                <div class="panel-numberTable-body" style="padding-top: unset; padding-bottom: unset; margin-bottom: 13px;">
+                    <!--
+                    <div class="row" style="margin-left: 1px;margin-right: 1px;">
+                    <div class="list-group">
+                        <div id="numbers">
+                        </div>
+                    </div>
+                    </div>
+                                -->
+                    <div class="row" id="panel-numberTable">
+                        <div class="row">
+                            <div style="overflow-x:auto;">
+                                <div class="col-xs-12">
+                                    <table id="numberTable">
+                                        <thead>
+                                        <tr>
+                                            <th></th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tbody>
+                                    </table>
+                                </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--<div class="row" style="margin-left: 1px; margin-top: 3px; margin-bottom: 3px;" >
+
+                        </div>-->
+
+                        <div class="row" id="numberTable-bottom" style="display:none;">
+                            <div class="col-xs-2"  style="margin-top: 4px; margin-bottom: 4px;">
+                                <button type="button" id="btnSaveNum" class="btn btn-primary">Save</button>
+                            </div>
+                            <div class="col-xs-8" >
+                            </div>
+                            <div class="col-xs-2" style="margin-top: 4px; margin-bottom: 4px;">
+                                <button type="button" id="btnAddNum" class="btn btn-primary" style="float: right; ">Add</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- < panel number Options > -->
+                    <div class="row" id="panel-numberOptions" style="display: none" >
+
+                        <div class="row">
+                            <!--<div class="col-xs-12">-->
+
+                                    <!--<div id="numberOptions-top" style="float: left; margin-right: 8px;" >-->
+                                    <!--</div>-->
+                                    <!--<div>-->
+                                        <!--<label style="padding-left: 8px; margin-bottom: unset;">Default</label>-->
+                                    <!--</div>-->
+                                    <!--<div>-->
+                                        <!--<label class="switch" id="default">-->
+                                            <!--&lt;!&ndash;<input type="checkbox" checked>&ndash;&gt;-->
+                                            <!--<input type="checkbox" >-->
+                                            <!--<span class="slider disable round"></span>-->
+                                        <!--</label>-->
+                                    <!--</div>-->
+                            <!--</div>-->
+
+                            <!--<div class="col-xs-6">-->
+                            <!--<table>-->
+                                <!--<tr>-->
+                                    <!--<td id="numberOptions-top"></td>-->
+                                    <!--<td></td>-->
+                                    <!--<td>-->
+                                        <!--<label class="switch" id="default">-->
+                                        <!--&lt;!&ndash;<input type="checkbox" checked>&ndash;&gt;-->
+                                        <!--<input type="checkbox" >-->
+                                        <!--<span class="slider disable round"></span>-->
+                                        <!--</label>-->
+                                    <!--</td>-->
+                                <!--</tr>-->
+                            <!--</table>-->
+                            <!--</div>-->
+
+                            <div class="col-xs-1">
+
+                            </div>
+                            <div class="col-xs-2" style="margin-top: 4px; padding-left: unset;">Default
+                            </div>
+                            <div class="col-xs-4" >
+                                <label class="switch" id="default">
+                                    <!--<input type="checkbox" checked>-->
+                                    <input type="checkbox" >
+                                    <span class="slider disable round"></span>
+                                </label>
+                            </div>
+                            <div class="col-xs-4" style="margin-top: 4px; padding-left: unset; "  id="numberOptions-top">
+
+                            </div>
+                            <!--<div class="col-xs-3">-->
+
+                            <!--</div>-->
+
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1">
+
+                            </div>
+                            <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; ">Own
+
+                            </div>
+                            <div class="col-xs-4" >
+                                <label class="switch" id="sliderOwnWork">
+                                    <!--<input type="checkbox" checked>-->
+                                    <input type="checkbox" id="cbOwnWork">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; " >Work
+
+                            </div>
+                            <div class="col-xs-3">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1">
+
+                            </div>
+                            <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; ">Mobile
+
+                            </div>
+                            <div class="col-xs-4" >
+                                <label class="switch">
+                                    <!-- <input type="checkbox" checked> -->
+                                    <input type="checkbox">
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; " >Land
+
+                            </div>
+                            <div class="col-xs-3">
+
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1">
+
+                            </div>
+                            <div class="col-xs-2" style="margin-top: 4px; padding-left: unset; ">Fax
+
+                            </div>
+                            <div class="col-xs-4" >
+                                <label class="switch">
+                                    <input type="checkbox" checked>
+                                    <span class="slider round"></span>
+                                </label>
+                            </div>
+                            <!--<div class="col-xs-1" >-->
+
+                            <!--</div>-->
+                            <div class="col-xs-1" style="margin-top: 4px; padding-left: unset;">
+                                <button type="button" id="btnOKnumbeOptions" class="btn btn-primary">OK</button>
+                            </div>
+                            <div class="col-xs-4">
+
+                            </div>
+                        </div>
+                    </div>
+                    <!-- </ panel number Options > -->
+
+                </div>
+
+
+            </div>
+        </div>
+
+        <!--
+            <div class="panel panel-default" style="margin-top: 2px;">
+
+                <div class="panel-heading" style="padding-bottom: unset;">Info one</div>
+                <div class="panel-body" style="padding-top: unset;padding-bottom: unset;">
+                    <div class="row">
+                        <div class="col-xs-4" style="padding: unset;">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt1" type="text" class="form-control" name="msg" placeholder="Info 1">
+                            </div>
+                        </div>
+                        <div class="col-xs-8" style="padding: unset;">
+                            <div class="input-group" style="padding: unset;">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt2" type="text" class="form-control" name="msg" placeholder="Info 2">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6" style="padding: unset;">
+                            <div class="input-group" style="padding: unset;">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input type="text" id="dp1" class="form-control datepicker input-md" width="150px" placeholder="Date:24/05/2010">
+                            </div>
+                        </div>
+                        <div class="col-xs-6" style="padding: unset;">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt4" type="text" class="form-control" name="msg" placeholder="Info 4">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" style="padding: unset;">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt5" type="text" class="form-control" name="msg" placeholder="Info 5">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8" style="padding: unset;">
+                            <div class="input-group" style="padding: unset;">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt6" type="text" class="form-control" name="msg" placeholder="Info 6">
+                            </div>
+                        </div>
+                        <div class="col-xs-4" style="padding: unset;">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt7" type="text" class="form-control" name="msg" placeholder="Info 7">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-6" style="padding: unset;">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt8" type="text" class="form-control" name="msg" placeholder="Info 8">
+                            </div>
+                        </div>
+                        <div class="col-xs-6" style="padding: unset;">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt9" type="text" class="form-control" name="msg" placeholder="Info 9">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-12" style="padding: unset;">
+                            <div class="input-group">
+                                <span class="input-group-addon"><i class="glyphicon glyphicon-edit"></i></span>
+                                <input id="txt10" type="text" class="form-control" name="msg" placeholder="Info 10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row" style="margin-left: 1px;">
+                 <button type="button" id="btnSavex" class="btn btn-success">Save</button>
+            </div>
+        -->
+
+    </div> <!--</Row page2>-->
+</div>
+
+
+
+<!-- end page 2 -->

@@ -1,0 +1,452 @@
+/*
+ * Licensed to the Apache Software Foundation (ASF) under one
+ * or more contributor license agreements.  See the NOTICE file
+ * distributed with this work for additional information
+ * regarding copyright ownership.  The ASF licenses this file
+ * to you under the Apache License, Version 2.0 (the
+ * "License"); you may not use this file except in compliance
+ * with the License.  You may obtain a copy of the License at
+ *
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing,
+ * software distributed under the License is distributed on an
+ * "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY
+ * KIND, either express or implied.  See the License for the
+ * specific language governing permissions and limitations
+ * under the License.
+ */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* Added by Rajeendra */
+.ui-loader > h1:nth-child(2){
+    visibility: hidden;
+}
+
+.input-group-addon:last-child{
+ border-left: solid;
+ border-color: #ccc;
+ border-width: 1px;
+ /* background-color: #890707; */
+}
+
+#ui-datepicker-div{
+    z-index: 2;
+}
+.rk-bs{
+    /*border: black;*/
+    border-style: ridge;
+    border-width:thin;
+    /*border-color: white;*/
+}
+.rk-bs2{
+    border: green;
+    border-style: ridge;
+    border-width:thin;
+    padding-left: 0px;
+    padding-right: 0px;
+    /*border-color: white;*/
+}
+.modal-content{
+   /* background-color: darkseagreen;*/
+    background-color: white;
+    /*background-color: transparent;*/
+}
+.modal-header{
+    font-variant: petite-caps;
+}
+/* end - Added by */
+
+/* Nav bar */
+.navbar-default{
+    /*background-color: green;*/
+    color: #890707;
+    background-color: #0088bb;
+    border-color:  white;
+    background-repeat: no-repeat;
+}
+/* end - Nav bar */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* Horizontal touch scroll icon bar*/
+.horizontal-scroll-wrapper{
+    position:absolute;
+    display:block;
+    top:0;
+    left:0;
+    width:80px;
+    max-height:100vw;
+    margin:0;
+    /*background-color:#555;*/
+    background-color: #008eab;
+    overflow-y:auto;
+    overflow-x:hidden;
+    transform:rotate(-90deg) translateY(-80px);
+    transform-origin:right top;
+
+}
+.horizontal-scroll-wrapper > div{
+    transform:rotate(90deg);
+    transform-origin: right top;
+
+}
+
+.horizontal-scroll-wrapper > div > a:hover{
+    color: lime;
+    text-decoration: none;
+}
+
+.horizontal-scroll-wrapper > div > a:focus{
+    color: lime;
+    text-decoration: none;
+}
+
+.squares{
+    /*padding:80px 0 0 0;*/
+    /*padding:0 0 0 0;*/
+}
+
+.squares > div{
+    width:80px;
+    height:80px;
+
+    /* Rajeendra */
+    padding-top: 20px;
+    margin-top:auto;
+    margin-bottom:auto;
+    text-align:center;
+    /*background-color: #008eab;*/
+}
+
+.squares > div:active{
+    background-color: #4CAF50;
+}
+
+.squares > div:focus{
+    background-color: #4CAF50;
+}
+
+.rk-a-icon{
+    text-align: center;
+    font-size: 36px;
+    color: white;
+    background-color: inherit;
+}
+/* end-Horizontal touch scroll icon bar*/
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* start- HTML switch component */
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #2196F3;  /* #ccc background color-Button left */
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider.disable {
+	background-color: #BAEBEF;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #D5F1FF; /* button color */
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3; /* #2196F3 background color-Button right */
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/* end- HTML switch component */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* start- responsive table */
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #ddd;
+}
+
+th, td {
+    text-align: left;
+    padding: 8px;
+}
+
+tr:nth-child(even){background-color: #f2f2f2}
+
+/* end- responsive table */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* start- loader */
+
+.xloader {
+  position: fixed;
+  border: 16px solid #f3f3f3;
+  border-radius: 50%;
+  border-top: 16px solid #3498db;
+  width: 60px;
+  height: 60px;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+.loader {
+
+  position: fixed;
+  /*position: absolute;*/
+ /* z-index: 999;*/
+/*  height: 2em;
+  width: 2em;*/
+  overflow: show;
+  margin: auto;
+  /*margin: unset;*/
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+
+/*  position: absolute;*/
+/*  left: 50%;
+  top: 50%;*/
+  width: 60px;
+  height: 60px;
+  z-index: 9999;
+  /* border: 16px solid #f3f3f3; */
+  border: 5px solid #a3f3f3;
+  border-radius: 50%;
+  border-top: 5px solid #3498db;
+  -webkit-animation: spin 2s linear infinite; /* Safari */
+  animation: spin 2s linear infinite;
+}
+
+/* Transparent Overlay */
+.xxloader:before {
+  content: '';
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.3);
+}
+
+/* Safari */
+@-webkit-keyframes spin {
+  0% { -webkit-transform: rotate(0deg); }
+  100% { -webkit-transform: rotate(360deg); }
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* end- loader */
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* toast to display message */
+
+.toast-container {
+  width:230px;
+  height:100px;
+  position: fixed;
+  background-color: #bbe5f5;
+  top: 50%;
+  left: 47%;
+  margin-top: -100px;
+  margin-left: -100px;
+  z-index: 10;
+  position: relative;
+}
+.toast-header {
+  /* width:200px; */
+  padding-left: 7px; 
+  padding-top: 4px;
+  height:25px;
+  background-color: #015b7c;
+  color: aliceblue;
+} 
+.toast-msg-holder {
+  border-top: 1px solid#888; 
+  padding-top:5px; 
+  font-size:85%; 
+  text-align: center;
+}    
+.toast-btn-holder {
+  position: absolute;
+  top: 70%;
+  left: 44%;
+}   
+.toast-btn{
+  height: 25px;
+  width: 30px;
+  font-size: small;
+  padding-left: 7px;
+  padding-top: 3px;
+}   
+
+/* ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+#playground-container {
+    height: 500px;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: touch;
+}
+
+body, html{
+     height: 100%;
+ 	background-repeat: no-repeat;
+    /*background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);*/
+
+ 	font-family: 'Oxygen', sans-serif;
+	    background-size: cover;
+}
+
+.main{
+ 	/* margin:50px 15px; */
+}
+
+h1.title {
+	font-size: 50px;
+	font-family: 'Passion One', cursive;
+	font-weight: 400;
+}
+
+hr{
+	width: 10%;
+	color: #fff;
+}
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+label{
+	margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+.form-control {
+    height: auto!important;
+padding: 8px 12px !important;
+}
+.input-group {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+}
+#button {
+    border: 1px solid #ccc;
+    margin-top: 28px;
+    padding: 6px 12px;
+    color: #666;
+    text-shadow: 0 1px #fff;
+    cursor: pointer;
+    -moz-border-radius: 3px 3px;
+    -webkit-border-radius: 3px 3px;
+    border-radius: 3px 3px;
+    -moz-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    -webkit-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    background: #f5f5f5;
+    background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
+    background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
+}
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 400px;
+    padding: 10px 40px;
+	/*background:#009edf;*/
+	background:white;
+	/*color: #FFF;*/
+	color: black;
+    text-shadow: none;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
+span.input-group-addon i {
+    color: #009edf;
+    font-size: 17px;
+}
+
+.login-button{
+	margin-top: 5px;
+}
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
+

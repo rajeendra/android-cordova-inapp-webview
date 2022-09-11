@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <item name="blue" type="color">#33B5E5</item>
+    <item name="purple" type="color">#AA66CC</item>
+    <item name="green" type="color">#99CC00</item>
+    <item name="orange" type="color">#FFBB33</item>
+    <item name="red" type="color">#FF4444</item>
+    <item name="darkblue" type="color">#0040ff</item>
+    <item name="darkpurple" type="color">#9933CC</item>
+    <item name="darkgreen" type="color">#669900</item>
+    <item name="darkorange" type="color">#FF8800</item>
+    <item name="darkred" type="color">#CC0000</item>
+
+</resources>
