@@ -41,7 +41,7 @@ import java.nio.charset.StandardCharsets;
     curl --request POST \
     'https://data.mongodb-api.com/app/data-deltp/endpoint/data/v1/action/find' \
     --header 'Content-Type: application/json' \
-    --header 'api-key: nAwP3fotD5TPvLYb5Iyb84JLsuIuxVcXszICXLYJsztP1EvpIDMEtMZAqZ390ZeD' \
+    --header 'api-key: <API-KEY>' \
     --data-raw '{
       "dataSource": "Cluster0",
       "database": "home",
@@ -57,7 +57,7 @@ import java.nio.charset.StandardCharsets;
     curl --request POST \
     'https://data.mongodb-api.com/app/data-deltp/endpoint/data/v1/action/insertOne' \
     --header 'Content-Type: application/json' \
-    --header 'api-key: nAwP3fotD5TPvLYb5Iyb84JLsuIuxVcXszICXLYJsztP1EvpIDMEtMZAqZ390ZeD' \
+    --header 'api-key: <API-KEY>' \
     --data-raw '{
       "dataSource": "Cluster0",
       "database": "home",
@@ -83,7 +83,7 @@ import java.nio.charset.StandardCharsets;
      curl --request POST \
     'https://data.mongodb-api.com/app/data-deltp/endpoint/data/v1/action/updateOne' \
     --header 'Content-Type: application/json' \
-    --header 'api-key: nAwP3fotD5TPvLYb5Iyb84JLsuIuxVcXszICXLYJsztP1EvpIDMEtMZAqZ390ZeD' \
+    --header 'api-key: <API-KEY>' \
     --data-raw '{
       "dataSource": "Cluster0",
       "database": "home",
@@ -111,7 +111,7 @@ import java.nio.charset.StandardCharsets;
     curl --request POST \
     'https://data.mongodb-api.com/app/data-deltp/endpoint/data/v1/action/findOne' \
     --header 'Content-Type: application/json' \
-    --header 'api-key: nAwP3fotD5TPvLYb5Iyb84JLsuIuxVcXszICXLYJsztP1EvpIDMEtMZAqZ390ZeD' \
+    --header 'api-key: <API-KEY>' \
     --data-raw '{
       "dataSource": "Cluster0",
       "database": "home",
